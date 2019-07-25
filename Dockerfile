@@ -12,6 +12,9 @@ RUN apk add --no-cache git
 # Install dependencies via npm
 RUN npm install -g xml2js
 
+# Fix NODE_PATH, see https://stackoverflow.com/a/14515868/
+ENV NODE_PATH=/usr/lib/node_modules/
+
 # Trust the SEITENBAU root CA (as it signs the SEITENBAU-Bitbucket cert, from which we need to pull the repo)
 COPY seitenbau_root_ca.crt /root/seitenbau_root_ca.crt
 RUN git config --global http.sslCAInfo /root/seitenbau_root_ca.crt
