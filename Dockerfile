@@ -19,3 +19,6 @@ ENV NODE_PATH=/usr/lib/node_modules/
 # Trust the SEITENBAU root CA (as it signs the SEITENBAU-Bitbucket cert, from which we need to pull the repo)
 COPY seitenbau_root_ca.crt /root/seitenbau_root_ca.crt
 RUN git config --global http.sslCAInfo /root/seitenbau_root_ca.crt
+
+# Add SEITENBAU maven repo
+COPY maven_settings.xml /root/.m2/settings.xml

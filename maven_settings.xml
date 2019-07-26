@@ -1,0 +1,50 @@
+
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <mirror>
+      <id>globalMirror</id>
+      <mirrorOf>external:*</mirrorOf>
+      <name>Seitenbau Maven2 repository</name>
+      <url>http://maven2.seitenbau.net/artifactory/all-java</url>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>SB-DEV-Snapshot</id>
+      <properties>
+        <local.project.refs>false</local.project.refs>
+        <eclipse.useProjectReferences>true</eclipse.useProjectReferences>
+      </properties>
+      <repositories>
+        <repository>
+          <id>snapshots-repo</id>
+          <url>http://maven2.seitenbau.net/artifactory/all</url>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+    <profile>
+      <id>Liferay</id>
+      <properties>
+        <liferay.auto.deploy.dir>/sds/tools/liferay/portal-6.2-ce-ga6/deploy</liferay.auto.deploy.dir>
+        <liferay.app.server.deploy.dir>/sds/tools/liferay/portal-6.2-ce-ga6/tomcat-7.0.62/webapps</liferay.app.server.deploy.dir>
+        <liferay.app.server.lib.global.dir>/sds/tools/liferay/portal-6.2-ce-ga6/tomcat-7.0.62/lib/ext</liferay.app.server.lib.global.dir>
+        <liferay.app.server.portal.dir>/sds/tools/liferay/portal-6.2-ce-ga6/tomcat-7.0.62/webapps/ROOT</liferay.app.server.portal.dir>
+        <!-- gegebenenfalls gemäß der lokal installierten Liferay-Version anpassen, falss diese von der Version in der gui-parent-pom abweicht -->
+        <liferay.version>6.2.5</liferay.version>
+        <liferay.maven.plugin.version>6.2.5</liferay.maven.plugin.version>
+      </properties>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>Liferay</activeProfile>
+    <activeProfile>SB-DEV-Snapshot</activeProfile>
+    <!--<activeProfile>local</activeProfile>-->
+  </activeProfiles>
+
+</settings>
