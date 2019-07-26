@@ -12,6 +12,7 @@ RUN apk add --no-cache git
 
 # Install dependencies via npm
 RUN npm install -g xml2js
+RUN npm install -g zip-a-folder
 
 # Fix NODE_PATH, see https://stackoverflow.com/a/14515868/
 ENV NODE_PATH=/usr/lib/node_modules/
